@@ -55,6 +55,10 @@ public class Topic implements Serializable{
 	@OneToMany(mappedBy = "topic")
 	private Set<Reply> replies = new HashSet<>();
 	
+	@ManyToOne
+	@JoinColumn(name = "reply_id")
+	private Reply answer;
+	
 	
 	public Topic() {
 		
@@ -133,6 +137,11 @@ public class Topic implements Serializable{
 	
 	public Set<Reply> getReplies() {
 		return replies;
+	}
+	
+
+	public Reply getAnswer() {
+		return answer;
 	}
 
 	@Override
