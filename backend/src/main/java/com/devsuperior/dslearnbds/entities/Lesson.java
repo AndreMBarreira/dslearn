@@ -46,6 +46,10 @@ public abstract class Lesson implements Serializable {
 	@OneToMany(mappedBy = "lesson")
 	private Set<Deliver> deliveries = new HashSet<>();
 	
+	@ManyToOne
+	@JoinColumn(name = "lesson_id")
+	private Topic topics;
+	
 	public Lesson() {
 		
 	}
@@ -96,6 +100,14 @@ public abstract class Lesson implements Serializable {
 
 	public Set<Deliver> getDeliveries() {
 		return deliveries;
+	}
+
+	public Topic getTopics() {
+		return topics;
+	}
+
+	public void setTopics(Topic topics) {
+		this.topics = topics;
 	}
 
 	@Override
